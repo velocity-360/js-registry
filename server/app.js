@@ -4,7 +4,9 @@ var logger = require('morgan')
 
 var app = express()
 app.use(logger('dev'))
-app.use(express.static(path.join(__dirname, 'assets')))
+var staticPath = path.join(__dirname, 'public').replace('server/', '')
+//console.log('Static Path: '+static_path)
+app.use(express.static(staticPath))
 
 app.get('/', function(req, res, next){
 
