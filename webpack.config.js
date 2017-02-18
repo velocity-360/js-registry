@@ -14,8 +14,7 @@ module.exports = {
 	},
 	devtool: '#source-map',
 	plugins: process.env.NODE_ENV === 'production' ? [
-      // used to split out our sepcified vendor script
-		new webpack.optimize.CommonsChunkPlugin({
+		new webpack.optimize.CommonsChunkPlugin({ // used to split out our sepcified vendor script
 			name: 'react',
 			minChunks: Infinity,
 			filename: '[name].js',
@@ -32,8 +31,7 @@ module.exports = {
 		    }
     	})
 	] : [
-		// used to split out our sepcified vendor script
-		new webpack.optimize.CommonsChunkPlugin({
+		new webpack.optimize.CommonsChunkPlugin({ // used to split out our sepcified vendor script
 			name: 'react',
 			minChunks: Infinity,
 			filename: '[name].js',
