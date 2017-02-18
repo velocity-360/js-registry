@@ -4,8 +4,8 @@ var path = require('path')
 module.exports = {
 
 	entry: {
-		app: './src/app.js',
-		react: ['react', 'react-dom']
+		react: ['react', 'react-dom'],
+		app: './src/app.js'
 	},
 	output: {
 //		filename: '[name].[hash].js',
