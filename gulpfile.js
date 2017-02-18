@@ -12,14 +12,15 @@ var path = require('path')
 gulp.task('build', function(){
     return gulp.src(
             [
-                './js/entry.js'
+                './public/js/entry.js',
+                './public/dist/bundle.js',
             ]
         )
         .pipe(gp_concat('gulp-concat.js'))
         .pipe(gulp.dest('./js/min/'))
-        .pipe(gp_rename('vendor.min.js'))
+        .pipe(gp_rename('bundle.min.js'))
         .pipe(gp_uglify())
-        .pipe(gulp.dest('./js/build'));
+        .pipe(gulp.dest('./public/dist'));
 })
 
 // gulp.task('watch', function() {

@@ -6,6 +6,6 @@ document.body.appendChild(root)
 
 // load demo script..
 var script = document.createElement('script')
-script.setAttribute('src', 'https://raw.githubusercontent.com/velocity-360/js-registry/master/demo/example.js')
+script.setAttribute('src', 'http://54.158.144.8/demo/example.js')
 document.body.appendChild(script)
 
