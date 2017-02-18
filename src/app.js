@@ -1,10 +1,22 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
-const app = (
-	<div>
-		Entry Point
-	</div>
-)
+class App extends Component {
+	
+	componentDidMount(){
+		console.log('ComponentDidMount')
+	}
 
-ReactDOM.render(app, document.getElementById('root'))
+	render(){
+		return (
+			<div>
+				Entry Point
+			</div>
+
+		)
+	}
+
+}
+
+
+ReactDOM.render(<App />, document.getElementById('root'))
