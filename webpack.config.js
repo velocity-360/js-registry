@@ -7,8 +7,8 @@ module.exports = {
 		app: './src/app.js'
 	},
 	output: {
-		filename: 'dist/bundle.js',
-		sourceMapFilename: 'dist/bundle.map'
+		filename: 'public/dist/bundle.js',
+		sourceMapFilename: 'public/dist/bundle.map'
 	},
 	devtool: '#source-map',
 	plugins: process.env.NODE_ENV === 'production' ? [
