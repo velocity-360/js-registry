@@ -8,7 +8,6 @@ module.exports = {
 		app: './src/app.js'
 	},
 	output: {
-//		filename: '[name].[hash].js',
 		filename: '[name].js',
 		path: 'public/dist'
 	},

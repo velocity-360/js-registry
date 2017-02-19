@@ -23,6 +23,20 @@ gulp.task('build', function(){
         .pipe(gulp.dest('./public/dist'));
 })
 
+gulp.task('build-react', function(){
+    return gulp.src(
+            [
+                './bower_components/react/react.min.js',
+                './bower_components/react/react-dom.min.js'
+            ]
+        )
+        .pipe(gp_concat('gulp-concat.js'))
+        .pipe(gulp.dest('./js/min/'))
+        .pipe(gp_rename('react-react-dom.min.js'))
+        .pipe(gp_uglify())
+        .pipe(gulp.dest('./public/dist/react'));
+})
+
 // gulp.task('watch', function() {
 //     gulp.watch(['./public/less/**.less', './src/serverapp.js', './src/*/**.js', './src/*/*/**.js', './src/*/*/*/**.js'], ['less', 'es6-es5'])
 // })

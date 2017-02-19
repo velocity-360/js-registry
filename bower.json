@@ -1,0 +1,20 @@
+{
+  "name": "registry",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "fullstack360 <info@fullstack360.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/velocity-360/js-registry",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "^15.4.2"
+  }
+}
