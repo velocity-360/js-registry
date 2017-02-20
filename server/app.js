@@ -7,7 +7,14 @@ var bodyParser = require('body-parser')
 var sessions = require('client-sessions')
 var mongoose = require('mongoose')
 var compression = require('compression')
+require('dotenv').config()
 
+mongoose.connect(process.env.MONGO_URL, function (err, res) {
+  if (err)
+    console.log ('ERROR connecting to: ' + process.env.MONGO_URL + '. ' + err)
+  else 
+    console.log ('DB Connection success')
+})
 
 var app = express()
 
@@ -18,14 +25,12 @@ app.engine('mustache', require('hogan-middleware').__express)
 
 app.use(logger('dev'))
 var staticPath = path.join(__dirname, 'public').replace('server/', '')
-//console.log('Static Path: '+static_path)
 app.use(express.static(staticPath))
 
-app.get('/', function(req, res, next){
 
-	res.render('index', null)
+app.use('/', require('./routes/main'))
+app.use('/api', require('./routes/api'))
 
-})
 
 app.listen(3000)
 console.log('listening on port 3000')
