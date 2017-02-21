@@ -31,12 +31,17 @@ class Site extends Component {
 		return (site == null ) ? <div></div> : (
 			<div>
 				<h3>{site.name}</h3>
+				<a target="_blank" href={site.url}>{site.url}</a>
+				<br />
 				<span>Copy and paste the code below into your site before the end of the body tag:</span>
 				<br />
 				<code style={{background:'#f9f9f9', padding:16, border:'1px solid #ddd'}}>
 					{scriptTag}
-
 				</code>
+				<div style={{marginTop:24}}>
+					<a href="/account/logout">Log Out</a>
+				</div>
+
 			</div>
 		)
 	}

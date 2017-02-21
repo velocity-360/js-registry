@@ -4,6 +4,12 @@ var controllers = require('../controllers')
 
 router.get('/:action', function(req, res, next){
 
+	if (req.params.action == 'logout') {
+		req.session.reset()
+		res.redirect('/')
+		return
+	}
+
 	if (req.params.action == 'currentuser') {
 
 		if (req.session == null){
@@ -54,14 +60,8 @@ router.post('/:action', function(req, res, next){
 		controller
 		.post(req.body, null)
 		.then(function(result){
-			console.log('TEST 3')
 			req.session.site = result.id
 			res.redirect('/')
-			// res.json({
-			// 	confirmation: 'success',
-			// 	result: result
-			// })
-
 			return
 		})
 		.catch(function(err){
@@ -74,6 +74,31 @@ router.post('/:action', function(req, res, next){
 		})
 	}
 
+	if (req.params.action == 'login'){
+		console.log('LOGIN: '+JSON.stringify(req.body))
+
+		var controller = controllers.site
+		controller.get({url: req.body.url}, null)
+		.then(function(results){
+			if (results.length == 0){
+				throw new Error(req.body.url+' not found.')
+				return
+			}
+
+			var result = results[0]
+			req.session.site = result.id
+			res.redirect('/')
+			return
+		})
+		.catch(function(err){
+			res.json({
+				confirmation: 'fail',
+				message: err.message
+			})
+
+			return
+		})
+	}
 })
 
 module.exports = router

@@ -14,7 +14,7 @@ SiteSchema.methods.summary = function() {
 	var summary = {
 		name:this.name,
 		slug:this.slug,
-		url:this.name,
+		url:this.url,
 		domains:this.domains,
 		description:this.description,
 		image:this.image,
