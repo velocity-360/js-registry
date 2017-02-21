@@ -49,10 +49,10 @@ module.exports = {
 		})
 	},
 
-	post: function(params){
+	post: function(params, token){
 		return new Promise(function(resolve, reject){
 			if (params.slug == null) // might already be assigned
-				params['slug'] = utils.TextUtils.slugVersion(params.name)+'-'+utils.TextUtils.randomString(6)
+				params['slug'] = utils.TextUtils.slugVersion(params.name)+'-'+utils.TextUtils.randomString(6).toLowerCase()
 
 			Site.create(params, function(err, site){
 				if (err){

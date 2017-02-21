@@ -83,7 +83,6 @@ router.post('/:resource', function(req, res, next){
 
 	controller
 	.post(req.body, null)
-//	.post(req.body, req.session.token)
 	.then(function(result){
 		res.json({
 			confirmation: 'success',
