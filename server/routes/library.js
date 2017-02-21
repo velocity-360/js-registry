@@ -1,11 +1,22 @@
 var express = require('express')
 var router = express.Router()
+var controllers = require('../controllers')
 
 router.get('/:site', function(req, res, next){
 	var site = req.params.site
 
-	res.setHeader('Content-Type', 'text/javascript')
-	res.send("console.log('HELLO WORLD!')")
+	controllers.site
+	.findById()
+	.then(function(site){
+		res.setHeader('Content-Type', 'text/javascript')
+		res.send("console.log('HELLO " + site.name + "')")
+
+	})
+	.catch(function(err){
+		res.send('ERROR: '+err.message)
+	})
+
+
 
 })
 
