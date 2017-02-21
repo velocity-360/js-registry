@@ -39,6 +39,11 @@ module.exports = {
 					return
 				}
 
+				if (site == null){
+					reject(new Error('Site Not Found'))
+					return
+				}
+
 				if (isRaw){
 					resolve(site)
 					return

@@ -24,12 +24,22 @@ router.get('/:action', function(req, res, next){
 			return
 		}
 
-		res.json({
-			confirmation: 'success',
-			site: req.session.site
+		var controller = controllers.site
+		controller
+		.getById(req.session.site, false)
+		.then(function(result){
+			res.json({
+				confirmation: 'success',
+				site: result
+			})
 		})
-
-
+		.catch(function(err){
+			req.session.reset()
+			res.json({
+				confirmation: 'fail',
+				message: err.message
+			})
+		})
 	}
 
 
@@ -38,9 +48,7 @@ router.get('/:action', function(req, res, next){
 
 router.post('/:action', function(req, res, next){
 	
-	console.log('TEST 1: '+req.params.action)
 	if (req.params.action == 'register'){ // for now, have this create a site
-		console.log('TEST 2')
 		var controller = controllers.site
 
 		controller
