@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { APIManager } from '../../utils'
+import { connect } from 'react-redux'
+import actions from '../../actions'
 
 class Site extends Component {
 	constructor(){
@@ -13,10 +15,12 @@ class Site extends Component {
 		APIManager
 		.handleGet('/account/currentuser')
 		.then(response => {
-			console.log(JSON.stringify(response))
-			this.setState({
-				site: response.site
-			})
+//			console.log(JSON.stringify(response.site))
+			this.props.currentUserReceived(response.site)
+
+			// this.setState({
+			// 	site: response.site
+			// })
 		})
 		.catch(err => {
 			console.log(err.message)
@@ -24,7 +28,7 @@ class Site extends Component {
 	}
 
 	render(){
-		const site = this.state.site
+		const site = this.props.account.site
 
 		return (site == null ) ? null : (
 			<div>
@@ -49,4 +53,16 @@ class Site extends Component {
 	}
 }
 
-export default Site
+const stateToProps = (state) => {
+	return {
+		account: state.account
+	}
+}
+
+const dispatchToProps = (dispatch) => {
+	return {
+		currentUserReceived: (user) => dispatch(actions.currentUserReceived(user))
+	}
+}
+
+export default connect(stateToProps, dispatchToProps)(Site)
