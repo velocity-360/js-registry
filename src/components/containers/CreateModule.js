@@ -53,7 +53,8 @@ class CreateModule extends Component {
 		APIManager
 		.handlePost('/api/module', this.state.module)
 		.then(response => {
-			console.log(JSON.stringify(response))
+			// console.log(JSON.stringify(response))
+			window.location.href = '/'
 		})
 		.catch(err => {
 			console.log(err.message)
