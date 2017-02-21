@@ -1,5 +1,7 @@
 import Site from './Site'
+import CreateModule from './CreateModule'
 
 export {
-	Site
+	Site,
+	CreateModule
 }

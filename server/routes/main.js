@@ -17,6 +17,10 @@ router.get('/', function(req, res, next){
 })
 
 router.get('/:page', function(req, res, next){
+	if (req.params.page == 'aws'){
+		next()
+		return
+	}
 
 	res.render(req.params.page, null)
 

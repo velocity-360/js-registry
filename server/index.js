@@ -43,6 +43,7 @@ app.use('/', require('./routes/main'))
 app.use('/api', require('./routes/api'))
 app.use('/account', require('./routes/account'))
 app.use('/library', require('./routes/library'))
+app.use('/aws', require('./routes/aws'))
 
 
 app.listen(3000)

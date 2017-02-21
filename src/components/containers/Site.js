@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { APIManager } from '../../utils'
+import { Link } from 'react-router'
 
 class Site extends Component {
 	constructor(){
@@ -17,7 +18,6 @@ class Site extends Component {
 			this.setState({
 				site: response.site
 			})
-
 		})
 		.catch(err => {
 			console.log(err.message)
@@ -50,7 +50,8 @@ class Site extends Component {
 
 				<div className="col-md-6">
 					<div style={{marginTop:24, background:'#f9f9f9', padding:16, border:'1px solid #ddd'}}>
-						<h4>Modules</h4>
+						<h4>Select Modules</h4>
+						<Link to="/modules">Create</Link>
 
 
 					</div>
