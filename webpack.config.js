@@ -4,20 +4,20 @@ var path = require('path')
 module.exports = {
 
 	entry: {
-		react: ['react', 'react-dom'],
+//		react: ['react', 'react-dom'],
 		app: './src/app.js'
 	},
 	output: {
-		filename: '[name].js',
+		filename: 'bundle.js',
 		path: 'public/dist'
 	},
 	devtool: '#source-map',
 	plugins: process.env.NODE_ENV === 'production' ? [
-		new webpack.optimize.CommonsChunkPlugin({ // used to split out our sepcified vendor script
-			name: 'react',
-			minChunks: Infinity,
-			filename: '[name].js',
-		}),
+		// new webpack.optimize.CommonsChunkPlugin({ // used to split out our sepcified vendor script
+		// 	name: 'react',
+		// 	minChunks: Infinity,
+		// 	filename: '[name].js',
+		// }),
 	    new webpack.DefinePlugin({
 	        'process.env': {
 	        	'NODE_ENV': JSON.stringify('production')
@@ -30,11 +30,11 @@ module.exports = {
 		    }
     	})
 	] : [
-		new webpack.optimize.CommonsChunkPlugin({ // used to split out our sepcified vendor script
-			name: 'react',
-			minChunks: Infinity,
-			filename: '[name].js',
-		})
+		// new webpack.optimize.CommonsChunkPlugin({ // used to split out our sepcified vendor script
+		// 	name: 'react',
+		// 	minChunks: Infinity,
+		// 	filename: '[name].js',
+		// })
 	],	
 	module: {
 		loaders: [
