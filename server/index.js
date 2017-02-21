@@ -42,6 +42,7 @@ app.use(express.static(staticPath))
 app.use('/', require('./routes/main'))
 app.use('/api', require('./routes/api'))
 app.use('/account', require('./routes/account'))
+app.use('/library', require('./routes/library'))
 
 
 app.listen(3000)
