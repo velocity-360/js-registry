@@ -26,21 +26,38 @@ class Site extends Component {
 
 	render(){
 		const site = this.state.site
-		const scriptTag = (site == null ) ? null : '<script src="http://54.158.144.8/library/'+site.id+'"></script>'
 
-		return (site == null ) ? <div></div> : (
-			<div>
-				<h3>{site.name}</h3>
-				<a target="_blank" href={site.url}>{site.url}</a>
-				<br />
-				<span>Copy and paste the code below into your site before the end of the body tag:</span>
-				<br />
-				<code style={{background:'#f9f9f9', padding:16, border:'1px solid #ddd'}}>
-					{scriptTag}
-				</code>
-				<div style={{marginTop:24}}>
-					<a href="/account/logout">Log Out</a>
+		return (site == null ) ? null : (
+			<div className="row">
+
+				<div className="col-md-6">
+					<h3>{site.name}</h3>
+					<div>
+						<a target="_blank" href={site.url}>{site.url}</a><br />
+						<a href="/account/logout">Log Out</a>
+					</div>
+
+					<hr />
+					<span style={{fontWeight:100}}>Copy and paste the code below into your site before the end of the body tag:</span><br />
+					<div style={{marginTop:6, background:'#f9f9f9', padding:16, border:'1px solid #ddd'}}>
+						<code>{ '<script src="http://54.158.144.8/library/'+site.id+'"></script>' }</code>
+					</div>
+
+					<div style={{marginTop:24, background:'#f9f9f9', padding:16, border:'1px solid #ddd'}}>
+						<h4>My Modules</h4>
+					</div>
 				</div>
+
+				<div className="col-md-6">
+					<div style={{marginTop:24, background:'#f9f9f9', padding:16, border:'1px solid #ddd'}}>
+						<h4>Modules</h4>
+
+
+					</div>
+
+				</div>
+
+
 
 			</div>
 		)

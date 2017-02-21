@@ -4,8 +4,7 @@ import { Site } from '../containers'
 class SiteAdmin extends Component {
 	render(){
 		return (
-			<div>
-				SiteAdmin Layout
+			<div className="container">
 				<Site />
 			</div>
 		)
