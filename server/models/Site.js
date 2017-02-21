@@ -5,6 +5,7 @@ var SiteSchema = new mongoose.Schema({
 	slug: {type:String, trim:true, default: ''},
 	url: {type:String, trim:true, default: ''},
 	domains: {type:Array, default: []}, // other authorized domains like staging urls
+	modules: {type:Array, default: []},
 	description: {type:String, trim:true, default: ''},
 	image: {type:String, trim:true, default: 'tHyPScSk'}, // blue logo
 	timestamp: {type:Date, default:Date.now}
@@ -16,6 +17,7 @@ SiteSchema.methods.summary = function() {
 		slug:this.slug,
 		url:this.url,
 		domains:this.domains,
+		modules:this.modules,
 		description:this.description,
 		image:this.image,
 		timestamp:this.timestamp,
