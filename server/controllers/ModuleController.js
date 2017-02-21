@@ -70,6 +70,19 @@ module.exports = {
 		})
 	},
 
+	put: function(id, params, token){
+		return new Promise(function(resolve, reject){
+			Site.findByIdAndUpdate(id, params, {new:true}, function(err, site){
+				if (err){
+					reject(err)
+					return
+				}
+
+				resolve(site.summary())
+			})			
+		})
+	},
+
 	// put: function(id, params, token){
 	// 	return new Promise(function(resolve, reject){
 	// 		if (token == null){
