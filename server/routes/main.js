@@ -12,7 +12,7 @@ router.get('/', function(req, res, next){
 		return
 	}
 
-	res.render('index', null)
+	res.render('index', null) // this mounts the react app
 
 })
 
