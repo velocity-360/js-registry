@@ -28,12 +28,20 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(compression())
+app.use(sessions({
+  cookieName: 'session',
+  secret: process.env.SESSION_SECRET,
+  duration: 24*60*60*1000, // 1 day
+  activeDuration:30*60*1000
+}))
+
 var staticPath = path.join(__dirname, 'public').replace('server/', '')
 app.use(express.static(staticPath))
 
 
 app.use('/', require('./routes/main'))
 app.use('/api', require('./routes/api'))
+app.use('/account', require('./routes/account'))
 
 
 app.listen(3000)
