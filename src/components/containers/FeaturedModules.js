@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { APIManager } from '../../utils' 
 import { Link } from 'react-router'
+import { connect } from 'react-redux'
+import actions from '../../actions'
 
 class FeaturedModules extends Component {
 	constructor(){
@@ -24,12 +26,24 @@ class FeaturedModules extends Component {
 		})
 	}
 
-	toggleModule(module){
-//		console.log('TOGGLE MODULE: '+JSON.stringify(module))
+	addRemoveModule(module){
+		const site = this.props.account.site
+		if (site == null)
+			return
 
-		// let updated = Object.assign({}, module)
-		// let subscribers = Object.assign([], updated.subscribers)
-		// subscribers.push
+
+		let updated = Object.assign({}, module)
+		let subscribers = Object.assign([], updated.subscribers)
+		const index = subscribers.indexOf(site.id)
+		console.log('INDEX = '+index)
+		if (index == -1)
+			subscribers.push(site.id)
+		else 
+			subscribers.splice(index, 1)
+
+
+		console.log('addRemoveModule: '+JSON.stringify(subscribers))
+
 	}
 
 	render(){
@@ -42,16 +56,16 @@ class FeaturedModules extends Component {
 				<hr />
 
 				<ol>
-				{ list.map((module, i) => {
-						return (
-							<li key={module.id}>
-								{module.name}
-								<br />
-								<button onClick={this.toggleModule.bind(this, module)}>Add</button>
-							</li>
-						)
-					})
-				}
+					{ list.map((module, i) => {
+							return (
+								<li key={module.id}>
+									{ module.name }
+									<br />
+									<button onClick={this.addRemoveModule.bind(this, module)}>Add</button>
+								</li>
+							)
+						})
+					}
 				</ol>
 
 			</div>
@@ -61,4 +75,17 @@ class FeaturedModules extends Component {
 	}
 }
 
-export default FeaturedModules
+const stateToProps = (state) => {
+	return {
+		account: state.account
+	}
+}
+
+const dispatchToProps = (dispatch) => {
+	return {
+		updateModule: (module, params) => dispatch(actions.updateModule(module, params))
+	}
+}
+
+export default connect(stateToProps, dispatchToProps)(FeaturedModules)
+
