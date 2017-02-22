@@ -4,17 +4,18 @@ var controllers = require('../controllers')
 var Request = require('../utils/Request')
 
 router.get('/:site', function(req, res, next){
-	var site = req.params.site
+	var siteId = req.params.site
 
 	var js = ''
 
 	controllers.site
-	.getById(site, false)
+	.getById(siteId, false)
 	.then(function(site){
-		var react = 'http://54.158.144.8/dist/react/react-react-dom.min.js'
+		var react = 'https://thevarsity.s3.amazonaws.com/tx60Yxd4-react-react-dom.min.js'
 		return Request.handleGet(react)
 	})
 	.then(function(text){
+//		console.log('TEST: '+text)
 		js += text
 		var url = 'https://thevarsity.s3.amazonaws.com/HGoxdM0x-bundle.7989f1b2e676f47baa2f.js'
 		return Request.handleGet(url)

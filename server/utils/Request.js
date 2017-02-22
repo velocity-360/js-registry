@@ -15,6 +15,7 @@ module.exports = {
 					return
 				}
 
+//				console.log('REQUEST: '+JSON.stringify(res))
 				resolve(res.text)
 			})
 		})
